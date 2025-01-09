@@ -2,31 +2,17 @@ import { db } from "~/server/db";
 
 export const dynamic = "force-dynamic";
 
-const mockUrl = [
-  "https://utfs.io/f/cZGY1sqrdYjWBntr1xhFLkpdRIwEK8UHbN2nox9PX1WgzGQu",
-  "https://utfs.io/f/cZGY1sqrdYjWrDX2R6ItD2cIQM1jgdbSmaOrZzY6GPevUELN",
-  "https://utfs.io/f/cZGY1sqrdYjWPqiHjRUu576R4fiDlMJTOaQEcbSZCojmzIG3",
-  "https://utfs.io/f/cZGY1sqrdYjWZjUt2D8gYPrmadERinx9tWeJGs0TL7Ay4N6I",
-];
-
-const mockImages = mockUrl.map((url, index) => ({
-  id: index + 1,
-  url,
-}));
-
 export default async function HomePage() {
-  const posts = await db.query.posts.findMany();
-  console.log(posts);
+  const images = await db.query.images.findMany();
+  console.log(images);
 
   return (
     <main>
       <div className="flex flex-wrap gap-4">
-        {posts.map((post) => (
-          <div key={post.id}>{post.name}</div>
-        ))}
-        {mockImages.map((image) => (
-          <div key={image.id} className={"w-48"}>
+        {images.map((image) => (
+          <div key={image.id} className={"w-48 flex flex-col gap-1"}>
             <img src={image.url} />
+            {image.name}
           </div>
         ))}
       </div>
