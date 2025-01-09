@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
-
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { TopNav } from "~/app/_components/topnav";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -9,18 +9,7 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const TopNav = () => {
-  return (
-    <nav className="flex items-center justify-between border-b p-4 font-bold">
-      <div className="text-2xl">
-        Gallery
-      </div>
-      <div>
-        Sign in
-      </div>
-    </nav>
-  );
-};
+
 
 export default function RootLayout({
   children,
